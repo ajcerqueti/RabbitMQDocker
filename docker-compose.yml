@@ -1,0 +1,21 @@
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        hostname: rabbitmq
+        image: rabbitmq:3.8.22-management
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=root
+            - RABBITMQ_DEFAULT_PASS=password
+        volumes:
+            - "rabbitmq_data:/data"
+        networks:
+            - rabbitmq-net
+
+volumes:
+    rabbitmq_data:
+
+networks:
+    rabbitmq-net:
